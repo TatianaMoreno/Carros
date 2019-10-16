@@ -34,19 +34,10 @@ public class MenuCarro implements  Serializable{
         listarCarros = new ArrayList<>();
     }
     public List<Carro> createCars() {
-        List<Carro> listarCarros = new ArrayList<Carro>();
         listarCarros.add(new Carro(getNombre(),getCar(), getModelo()));
         return listarCarros;
     }
     public MenuCarro() {
-    }
-
-    public List<String> getCars() {
-        return marca;
-    }
-
-    public void setCars(List<String> cars) {
-        this.marca = cars;
     }
 
     public String getCar() {
@@ -55,6 +46,14 @@ public class MenuCarro implements  Serializable{
 
     public void setCar(String car) {
         this.car = car;
+    }
+
+    public List<String> getMarca() {
+        return marca;
+    }
+
+    public void setMarca(List<String> marca) {
+        this.marca = marca;
     }
 
     public String getNombre() {
@@ -72,6 +71,14 @@ public class MenuCarro implements  Serializable{
     public void setModelo(Date modelo) {
         this.modelo = modelo;
     }
-    
+
+    public List<Carro> getListarCarros() {
+        return listarCarros;
+    }
+
+    public void setListarCarros(List<Carro> listarCarros) {
+        this.listarCarros = listarCarros;
+    }
+
     
 }

@@ -29,26 +29,22 @@
                 <h:outputText value="#{menuCarro.modelo}">
                     <f:convertDateTime pattern="yyyy" />
                 </h:outputText>
-                <p:commandButton value="Agregar" id="ajax" action="#{menuCarro.buttonAction}" style="margin-right:20px;" styleClass="ui-priority-primary">
+                <p:commandButton value="Agregar" id="ajax" action="#{menuCarro.createCars()}" style="margin-right:20px;" styleClass="ui-priority-primary">
                     <f:param name="productId" value="10" />
                 </p:commandButton>
             </h:panelGrid>
 
 
-            <p:dataTable var="carro" value="#{menuCarro.cars}" rendered="#{not empty menuCarro.cars}">
-                <p:column headerText="Numero">
-                    <h:outputText value="" />
-                </p:column>
-
+            <p:dataTable var="carro" value="#{menuCarro.listarCarros}" rendered="#{not empty menuCarro.listarCarros}">
                 <p:column headerText="Nombre">
                     <h:outputText value="" />
                 </p:column>
 
-                <p:column headerText="Apellido">
+                <p:column headerText="Marca">
                     <h:outputText value="" />
                 </p:column>
 
-                <p:column headerText="Correo">
+                <p:column headerText="Modelo">
                     <h:outputText value="" />
                 </p:column>
             </p:dataTable>
