@@ -39,7 +39,7 @@
         <h:form>
 
             <h3>...CARROS...</h3> 
-            <h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5">
+            <h:panelGrid id="datos" columns="2" style="margin-bottom:10px" cellpadding="5">
                 <p:outputLabel value="NOMBRE: " />
                 <p:inputText id="nombre" value="#{menuCarro.nombre}" />
                 <p:outputLabel value="MARCA: " />
@@ -52,13 +52,14 @@
                 <h:outputText value="#{menuCarro.modelo}">
                     <f:convertDateTime pattern="yyyy" />
                 </h:outputText>
-                <p:commandButton value="Agregar" id="ajax" action="#{menuCarro.createCars()}" style="margin-right:20px;" styleClass="ui-priority-primary">
+                <p:commandButton value="Agregar" id="ajax" update="tablacarro datos" action="#{menuCarro.createCars()}" 
+                                 style="margin-right:20px;" styleClass="ui-priority-primary" >
                     <f:param name="productId" value="10" />
                 </p:commandButton>
             </h:panelGrid>
 
 
-            <p:dataTable var="carro" value="#{menuCarro.listarCarros}" rendered="#{not empty menuCarro.listarCarros}" widgetVar="carsTable"
+            <p:dataTable id="tablacarro" var="carro" value="#{menuCarro.listarCarros}" rendered="#{menuCarro.listarCarros.size()>0 eq true}" widgetVar="carsTable"
                          emptyMessage="No cars found with given criteria" filteredValue="#{dtFilterView.filteredCars}"
                          rows="5"
                          paginator="true"
