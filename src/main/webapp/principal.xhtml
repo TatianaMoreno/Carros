@@ -37,7 +37,6 @@
             }
         </style>
         <h:form>
-
             <h3>...CARROS...</h3> 
             <h:panelGrid id="datos" columns="2" style="margin-bottom:10px" cellpadding="5">
                 <p:outputLabel value="NOMBRE: " />
@@ -52,26 +51,26 @@
                 <h:outputText value="#{menuCarro.modelo}">
                     <f:convertDateTime pattern="yyyy" />
                 </h:outputText>
-                <p:commandButton value="Agregar" id="ajax" update="tablacarro datos" action="#{menuCarro.createCars()}" 
+                <p:commandButton value="Agregar" id="ajax" update="tablacarro" action="#{menuCarro.createCars()}" 
                                  style="margin-right:20px;" styleClass="ui-priority-primary" >
                     <f:param name="productId" value="10" />
                 </p:commandButton>
             </h:panelGrid>
 
 
-            <p:dataTable id="tablacarro" var="carro" value="#{menuCarro.listarCarros}" rendered="#{menuCarro.listarCarros.size()>0 eq true}" widgetVar="carsTable"
+            <p:dataTable id="tablacarro" var="carro" value="#{menuCarro.listarCarros}" rendered = "true" widgetVar="carsTable"
                          emptyMessage="No cars found with given criteria" filteredValue="#{dtFilterView.filteredCars}"
                          rows="5"
                          paginator="true"
                          paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}">
-                <p:column filterBy="#{car.id}" headerText="Nombre" footerText="Contiene" filterMatchMode="contains">
-                    <h:outputText value="#{car.id}" />
+                <p:column filterBy="#{menuCarro.nombre}" headerText="Nombre" footerText="Contiene" filterMatchMode="contains">
+                    <h:outputText value="#{menuCarro.nombre}" />
                 </p:column>
                 <p:column filterBy="#{car.brand}" headerText="Marca" footerText="Exacto" filterMatchMode="exact">
                     <f:facet name="filter">
                         <p:selectOneMenu onchange="PF('carsTable').filter()" styleClass="custom-filter">
                             <f:selectItem itemLabel="Selecciona" itemValue="#{null}" noSelectionOption="true" />
-                            <f:selectItems value="#{dtFilterView.brands}" />
+                            <f:selectItems value="#{menuCarro.marca}" />
                         </p:selectOneMenu>
                     </f:facet>
                     <h:outputText value="#{car.brand}" />
