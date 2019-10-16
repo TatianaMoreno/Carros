@@ -5,7 +5,7 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:p="http://primefaces.org/ui">
     <h:head>
-        <title>Facelet Title</title>
+        <title>Agreagar Carros</title>
     </h:head>
     <h:body>
         <style type="text/css">
@@ -35,7 +35,7 @@
             </h:panelGrid>
 
 
-            <p:dataTable var="carro" value="#{dndCarsView.droppedCars}" rendered="#{not empty dndCarsView.droppedCars}">
+            <p:dataTable var="carro" value="#{menuCarro.cars}" rendered="#{not empty menuCarro.cars}">
                 <p:column headerText="Numero">
                     <h:outputText value="" />
                 </p:column>
