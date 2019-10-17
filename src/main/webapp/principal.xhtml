@@ -58,19 +58,19 @@
             </h:panelGrid>
 
 
-            <p:dataTable id="tablacarro" var="carro" value="#{menuCarro.listarCarros}" rendered = "true" widgetVar="carsTable"
+            <p:dataTable id="tablacarro" var="lista" value="#{menuCarro.listarCarros}" rendered = "true" widgetVar="carsTable"
                          emptyMessage="No cars found with given criteria" filteredValue="#{dtFilterView.filteredCars}"
                          rows="5"
                          paginator="true"
                          paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}">
                 <p:column filterBy="#{menuCarro.nombre}" headerText="Nombre" footerText="Contiene" filterMatchMode="contains">
-                    <h:outputText value="#{menuCarro.nombre}" />
+                    <h:outputText value="#{lista.nombreCarro}" />
                 </p:column>
                 <p:column filterBy="#{car.brand}" headerText="Marca" footerText="Exacto" filterMatchMode="exact">
                     <f:facet name="filter">
                         <p:selectOneMenu onchange="PF('carsTable').filter()" styleClass="custom-filter">
                             <f:selectItem itemLabel="Selecciona" itemValue="#{null}" noSelectionOption="true" />
-                            <f:selectItems value="#{menuCarro.marca}" />
+                            <f:selectItems value="#{lista.marcaCarro}" />
                         </p:selectOneMenu>
                     </f:facet>
                     <h:outputText value="#{car.brand}" />
@@ -81,7 +81,7 @@
                             <f:converter converterId="javax.faces.Integer" />
                         </p:spinner>
                     </f:facet>
-                    <h:outputText value="#{car.year}" />
+                    <h:outputText value="#{lista.fecha}" />
                 </p:column>
 
             </p:dataTable>
