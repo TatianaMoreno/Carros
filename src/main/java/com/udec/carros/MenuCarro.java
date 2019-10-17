@@ -12,6 +12,7 @@ import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.faces.model.SelectItem;
 import javax.faces.view.ViewScoped;
+import javax.inject.Inject;
 import javax.inject.Named;
 
 /**
@@ -27,6 +28,7 @@ public class MenuCarro implements  Serializable{
     private Date modelo;
     private Carro carro;
     private List<Carro> listarCarros;
+    private List<Carro> filteredCars;
     @PostConstruct
     public void init() {
         marca = new ArrayList<>();
@@ -87,6 +89,14 @@ public class MenuCarro implements  Serializable{
 
     public void setCarro(Carro carro) {
         this.carro = carro;
+    }
+
+    public List<Carro> getFilteredCars() {
+        return filteredCars;
+    }
+
+    public void setFilteredCars(List<Carro> filteredCars) {
+        this.filteredCars = filteredCars;
     }
 
     
