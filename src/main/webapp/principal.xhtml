@@ -58,7 +58,7 @@
 
 
             <p:dataTable id="tablacarro" var="lista" value="#{menuCarro.listarCarros}" rendered = "true" widgetVar="carsTable"
-                         emptyMessage="No cars found with given criteria" filteredValue="#{menuCarro.filteredCars}"
+                         emptyMessage="No hay carros con ese criterio de busqueda" filteredValue="#{menuCarro.filteredCars}"
                          rows="5"
                          paginator="true"
                          paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}">
@@ -74,7 +74,7 @@
                     </f:facet>
                     <h:outputText value="#{lista.marcaCarro}" />
                 </p:column>
-                <p:column filterBy="#{lista.fecha}" headerText="Modelo" footerText="Fecha" filterMatchMode="lte">
+                <p:column filterBy="#{lista.fecha}" headerText="Modelo" footerText="Fechas menores o iguales" filterMatchMode="lte">
                     <f:facet name="filter">
                         <p:spinner onchange="PF('carsTable').filter()" styleClass="year-spinner custom-filter">
                             <f:converter converterId="javax.faces.Integer" />
