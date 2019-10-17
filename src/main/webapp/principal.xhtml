@@ -57,7 +57,7 @@
             </h:panelGrid>
 
 
-            <p:dataTable id="tablacarro" var="lista" value="#{menuCarro.listarCarros}" rendered = "true" widgetVar="carsTable"
+            <p:dataTable id="tablacarro" var="lista" value="#{menuCarro.listarCarros}" rendered = "#{not empty menuCarro.listarCarros}" widgetVar="carsTable"
                          emptyMessage="No hay carros con ese criterio de busqueda" filteredValue="#{menuCarro.filteredCars}"
                          rows="5"
                          paginator="true"
