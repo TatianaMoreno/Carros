@@ -40,16 +40,13 @@
             <h3>...CARROS...</h3> 
             <h:panelGrid id="datos" columns="2" style="margin-bottom:10px" cellpadding="5">
                 <p:outputLabel value="NOMBRE: " />
-                <p:inputText id="nombre" value="#{menuCarro.nombre}" />
+                <p:inputText id="nombre" value="#{menuCarro.nombre}" required="true"/>
                 <p:outputLabel value="MARCA: " />
                 <p:selectOneMenu id="marca" value="#{menuCarro.car}"  style="width:125px">
                     <f:selectItems value="#{menuCarro.marca}" />
                 </p:selectOneMenu>
                 <p:outputLabel value="MODELO: " />
-                <p:calendar id="month" value="#{menuCarro.modelo}" pattern="yyyy"  yearRange="2000:2030"/>
-                <h:outputText value="#{menuCarro.modelo}">
-                    <f:convertDateTime pattern="yyyy" />
-                </h:outputText>
+                <p:calendar id="month" value="#{menuCarro.modelo}" pattern="yyyy"  yearRange="1990:2019" required="true"/>
                 <p:commandButton value="Agregar" id="ajax" update="tablacarro" action="#{menuCarro.createCars()}" 
                                  style="margin-right:20px;" styleClass="ui-priority-primary" >
                     <f:param name="productId" value="10" />
