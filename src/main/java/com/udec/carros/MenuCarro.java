@@ -30,8 +30,33 @@ public class MenuCarro implements  Serializable{
     @PostConstruct
     public void init() {
         marca = new ArrayList<>();
-        marca.add("YO QUE SE");
-        marca.add("NO SE DE CARROS");
+        marca.add("Jeep");
+        marca.add("Alfa Romeo");
+        marca.add("Aston Martin");
+        marca.add("Audi");
+        marca.add("Bentley");
+        marca.add("BMW");
+        marca.add("Bugatti");
+        marca.add("Cadillac");
+        marca.add("Chevrolet");
+        marca.add("Ferrari");
+        marca.add("Fiat");
+        marca.add("Ford");
+        marca.add("Honda");
+        marca.add("Hyundai");
+        marca.add("Jaguar");
+        marca.add("Lotus");
+        marca.add("Mazda");
+        marca.add("Mercedes-Benz");
+        marca.add("Mitsubishi");
+        marca.add("Nissan");
+        marca.add("Peugeot");
+        marca.add("SEAT");
+        marca.add("Tesla");
+        marca.add("Toyota");
+        marca.add("Volkswagen");
+        marca.add("Volvo");
+        
         listarCarros = new ArrayList<>();
         
     }
