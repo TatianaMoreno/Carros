@@ -10,9 +10,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import javax.annotation.PostConstruct;
-import javax.faces.model.SelectItem;
 import javax.faces.view.ViewScoped;
-import javax.inject.Inject;
 import javax.inject.Named;
 
 /**
@@ -27,7 +25,7 @@ public class MenuCarro implements  Serializable{
     private String nombre;
     private Date modelo;
     private Carro carro;
-    private List<Carro> listarCarros;
+    private static List<Carro> listarCarros;
     private List<Carro> filteredCars;
     @PostConstruct
     public void init() {
@@ -80,7 +78,7 @@ public class MenuCarro implements  Serializable{
     }
 
     public void setListarCarros(List<Carro> listarCarros) {
-        this.listarCarros = listarCarros;
+        MenuCarro.listarCarros = listarCarros;
     }
 
     public Carro getCarro() {
