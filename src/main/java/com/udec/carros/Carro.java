@@ -9,16 +9,24 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
- *
- * @author tmore
+ *  Clase que guarda la informacion del carro
+ * @author Tatiana Moreno, Andres Chila
  */
 public class Carro {
-
+    //Variable que guarda el noimbre del carro
     private String nombreCarro;
+    //Variable que guarda la marca del carro
     private String marcaCarro;
+    //Variable que guarda el modelo del carro
     private Date modeloCarro;
+    //Variable que guarda la fecha solo en años del modelo del carro
     private int fecha;
-
+    /**
+     * Constructor de la clsse
+     * @param nombreCarro
+     * @param marcaCarro
+     * @param modeloCarro 
+     */
     public Carro(String nombreCarro, String marcaCarro, Date modeloCarro) {
         this.nombreCarro = nombreCarro;
         this.marcaCarro = marcaCarro;
@@ -49,7 +57,11 @@ public class Carro {
     public void setModeloCarro(Date modeloCarro) {
         this.modeloCarro=modeloCarro;
     }
-
+    /**
+     * Metodo que obtiene la fecha y la pone solo en año
+     * @param modeloCarro
+     * @return 
+     */
     public int obtenerAnio(Date modeloCarro) {
         if (null == modeloCarro) {
             return 0;

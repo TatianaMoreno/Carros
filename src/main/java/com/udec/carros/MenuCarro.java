@@ -14,19 +14,29 @@ import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 
 /**
- *
- * @author tmore
+ *  Clase que guarda toda la logica para guardar los carrosy registrarlos
+ * @author Tatiana Moreno, Andres Chila
  */
 @Named
 @ViewScoped
 public class MenuCarro implements  Serializable{
+    //Variable que guarda 
     private String car;  
+    //Variable que guarda la lista de marcas que puede tener un carro
     private List<String> marca;
+    //Variable que guarda el nombre del carro
     private String nombre;
+    //Variable que guarda el modelo del carro
     private Date modelo;
+    //Objeto de tipo carro 
     private Carro carro;
+    //Variable que guarda la lista de carros que se registran
     private static List<Carro> listarCarros;
+    //Variable que guarda la lista de carros que se filtran 
     private List<Carro> filteredCars;
+    /**
+     * Primer metodo de la clase
+     */
     @PostConstruct
     public void init() {
         marca = new ArrayList<>();
@@ -60,6 +70,9 @@ public class MenuCarro implements  Serializable{
         listarCarros = new ArrayList<>();
         
     }
+    /**
+     * Metodo que gusrada el registro de carros
+     */
     public void createCars() {
         listarCarros.add(new Carro(getNombre(),getCar(), getModelo()));
     }
