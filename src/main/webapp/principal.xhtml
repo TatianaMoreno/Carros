@@ -46,8 +46,9 @@
                     <f:selectItems value="#{menuCarro.marca}" />
                 </p:selectOneMenu>
                 <p:outputLabel value="MODELO: " />
-                <p:calendar id="month" value="#{menuCarro.modelo}" pattern="yyyy"  yearRange="1990:2019" required="true"/>
+                <p:calendar id="month" value="#{menuCarro.modelo}" pattern="yyyy"  yearRange="1990:2019"  required="true"/>
                 <p:messages for="month"/>
+                
                 <p:commandButton value="Agregar" id="ajax" update="tabladecarros" action="#{menuCarro.createCars()}" 
                                  style="margin-right:20px;" styleClass="ui-priority-primary">
                     <f:param name="productId" value="10" />
