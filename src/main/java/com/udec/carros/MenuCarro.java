@@ -81,12 +81,12 @@ public class MenuCarro implements  Serializable{
         listarCarros.add(new Carro(getNombre(),getCar(), getModelo()));
     }
     public void onRowEdit(RowEditEvent event) {
-        FacesMessage msg = new FacesMessage("Car Edited", ((Carro) event.getObject()).getNombreCarro());
+        FacesMessage msg = new FacesMessage("Se edito el carro: ", ((Carro) event.getObject()).getNombreCarro());
         FacesContext.getCurrentInstance().addMessage(null, msg);
     }
      
     public void onRowCancel(RowEditEvent event) {
-        FacesMessage msg = new FacesMessage("Edit Cancelled", ((Carro) event.getObject()).getNombreCarro());
+        FacesMessage msg = new FacesMessage("Edicion cancelada para: ", ((Carro) event.getObject()).getNombreCarro());
         FacesContext.getCurrentInstance().addMessage(null, msg);
     }
      
