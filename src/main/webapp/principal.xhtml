@@ -9,97 +9,99 @@
     </h:head>
 
     <h:body>
+        <p:panel>
+            <h:form id="form" >
 
-        <h:form id="form" >
-            <center><h3>...CARROS...</h3> </center>
-            <p:panelGrid  columns="2" layout="grid">
-                <p:outputLabel value="NOMBRE: " />
-                <p:inputText id="nombre" value="#{menuCarro.nombre}" required="true"/>
+                <center><h3>...CARROS...</h3> </center>
+                <p:panelGrid  columns="2" layout="grid">
+                    <p:outputLabel value="NOMBRE: " />
+                    <p:inputText id="nombre" value="#{menuCarro.nombre}" required="true"/>
 
-                <p:outputLabel value="MARCA: " />
-                <p:selectOneMenu id="marca" value="#{menuCarro.car}"  style="width:125px">
-                    <f:selectItems value="#{menuCarro.marca}" />
-                </p:selectOneMenu>
+                    <p:outputLabel value="MARCA: " />
+                    <p:selectOneMenu id="marca" value="#{menuCarro.car}"  style="width:125px">
+                        <f:selectItems value="#{menuCarro.marca}" />
+                    </p:selectOneMenu>
 
-                <p:outputLabel value="MODELO: " />
-                <p:calendar id="month" value="#{menuCarro.modelo}" pattern="yyyy"  yearRange="1990:2019"  required="true"/>
-                <p:messages for="month"/>
+                    <p:outputLabel value="MODELO: " />
+                    <p:calendar id="month" value="#{menuCarro.modelo}" pattern="yyyy"  yearRange="1990:2019"  required="true"/>
+                    <p:messages for="month"/>
 
-            </p:panelGrid>
+                </p:panelGrid>
 
-            <p:growl id="msgs" showDetail="true"/>
-            <p:commandButton value="Agregar" id="ajax" update="@form" action="#{menuCarro.createCars()}" 
-                             style="margin-right:20px;" styleClass="ui-priority-primary">
-                <f:param name="productId" value="10" />
-            </p:commandButton>
-
-
-            <p:panel id="tabladecarros">
-                <p:dataTable id="tablacarro" 
-                             var="lista" 
-                             value="#{menuCarro.listarCarros}" 
-                             editable="true"
-                             rendered="#{not empty menuCarro.listarCarros}" 
-                             widgetVar="carsTable"
-                             emptyMessage="No hay carros con ese criterio de busqueda" 
-                             filteredValue="#{menuCarro.filteredCars}"
-                             rows="5"
-                             rowsPerPageTemplate="5,10,15"
-                             styleClass="tablaregistrocarros"
-                             paginator="true"
-                             paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}">
-
-                    <p:ajax event="rowEdit" listener="#{menuCarro.onRowEdit}" update=":form:msgs" />
-                    <p:ajax event="rowEditCancel" listener="#{menuCarro.onRowCancel}" update=":form:msgs" />
+                <p:growl id="msgs" showDetail="true"/>
+                <p:commandButton value="Agregar" id="ajax" update="@form" action="#{menuCarro.createCars()}" 
+                                 style="margin-right:20px;" styleClass="ui-priority-primary">
+                    <f:param name="productId" value="10" />
+                </p:commandButton>
 
 
-                    <p:column filterBy="#{lista.nombreCarro}" headerText="Nombre" footerText="Contiene" filterMatchMode="contains">
-                        <p:cellEditor>
-                            <f:facet name="output"><h:outputText value="#{lista.nombreCarro}" /></f:facet>
-                            <f:facet name="input"><p:inputText id="modelInput" value="#{lista.nombreCarro}" style="width:100%"/></f:facet>
-                        </p:cellEditor>
-                    </p:column>
+                <p:panel id="tabladecarros">
+                    <p:dataTable id="tablacarro" 
+                                 var="lista" 
+                                 value="#{menuCarro.listarCarros}" 
+                                 editable="true"
+                                 rendered="#{not empty menuCarro.listarCarros}" 
+                                 widgetVar="carsTable"
+                                 emptyMessage="No hay carros con ese criterio de busqueda" 
+                                 filteredValue="#{menuCarro.filteredCars}"
+                                 rows="5"
+                                 rowsPerPageTemplate="5,10,15"
+                                 styleClass="tablaregistrocarros"
+                                 paginator="true"
+                                 paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}">
 
-                    <p:column filterBy="#{lista.marcaCarro}" headerText="Marca" footerText="Exacto" filterMatchMode="exact">
-                        <f:facet name="filter">
-                            <p:selectOneMenu onchange="PF('carsTable').filter()" styleClass="custom-filter">
-                                <f:selectItem itemLabel="Selecciona" itemValue="#{null}" noSelectionOption="true" />
-                                <f:selectItems value="#{menuCarro.marca}" />
-                            </p:selectOneMenu>
-                        </f:facet>
-                        <p:cellEditor>
-                            <f:facet name="output"><h:outputText value="#{lista.marcaCarro}" /></f:facet>
-                            <f:facet name="input">
-                                <p:selectOneMenu value="#{lista.marcaCarro}">
+                        <p:ajax event="rowEdit" listener="#{menuCarro.onRowEdit}" update=":form:msgs" />
+                        <p:ajax event="rowEditCancel" listener="#{menuCarro.onRowCancel}" update=":form:msgs" />
+
+
+                        <p:column filterBy="#{lista.nombreCarro}" headerText="Nombre" footerText="Contiene" filterMatchMode="contains">
+                            <p:cellEditor>
+                                <f:facet name="output"><h:outputText value="#{lista.nombreCarro}" /></f:facet>
+                                <f:facet name="input"><p:inputText id="modelInput" value="#{lista.nombreCarro}" style="width:100%"/></f:facet>
+                            </p:cellEditor>
+                        </p:column>
+
+                        <p:column filterBy="#{lista.marcaCarro}" headerText="Marca" footerText="Exacto" filterMatchMode="exact">
+                            <f:facet name="filter">
+                                <p:selectOneMenu onchange="PF('carsTable').filter()" styleClass="custom-filter">
+                                    <f:selectItem itemLabel="Selecciona" itemValue="#{null}" noSelectionOption="true" />
                                     <f:selectItems value="#{menuCarro.marca}" />
                                 </p:selectOneMenu>
                             </f:facet>
-                        </p:cellEditor>
-                    </p:column>
+                            <p:cellEditor>
+                                <f:facet name="output"><h:outputText value="#{lista.marcaCarro}" /></f:facet>
+                                <f:facet name="input">
+                                    <p:selectOneMenu value="#{lista.marcaCarro}">
+                                        <f:selectItems value="#{menuCarro.marca}" />
+                                    </p:selectOneMenu>
+                                </f:facet>
+                            </p:cellEditor>
+                        </p:column>
 
-                    <p:column filterBy="#{lista.fecha}" headerText="Modelo" footerText="Fechas menores o iguales" filterMatchMode="lte">
-                        <f:facet name="filter">
-                            <p:spinner onchange="PF('carsTable').filter()" styleClass="year-spinner custom-filter">
-                                <f:converter converterId="javax.faces.Integer" />
-                            </p:spinner>
-                        </f:facet>
-                        <p:cellEditor>
-                            <f:facet name="output"><h:outputText value="#{lista.fecha}" /></f:facet>
-                            <f:facet name="input">
-                                <p:calendar id="month" value="#{lista.fecha}" pattern="yyyy"  yearRange="1990:2019"  required="true"/>
-                                <p:messages for="month"/>
+                        <p:column filterBy="#{lista.fecha}" headerText="Modelo" footerText="Fechas menores o iguales" filterMatchMode="lte">
+                            <f:facet name="filter">
+                                <p:spinner onchange="PF('carsTable').filter()" styleClass="year-spinner custom-filter">
+                                    <f:converter converterId="javax.faces.Integer" />
+                                </p:spinner>
                             </f:facet>
-                        </p:cellEditor>
-                        
-                    </p:column>
-                    <p:column style="width:35px">
-                        <p:rowEditor />
-                    </p:column>
-                </p:dataTable>
+                            <p:cellEditor>
+                                <f:facet name="output"><h:outputText value="#{lista.fecha}" /></f:facet>
+                                <f:facet name="input">
+                                    <p:calendar id="month" value="#{lista.fecha}" pattern="yyyy"  yearRange="1990:2019"  required="true"/>
+                                    <p:messages for="month"/>
+                                </f:facet>
+                            </p:cellEditor>
 
-            </p:panel>
+                        </p:column>
+                        <p:column style="width:35px">
+                            <p:rowEditor />
+                        </p:column>
+                    </p:dataTable>
 
-        </h:form>
+                </p:panel>
+
+            </h:form>
+        </p:panel>
     </h:body>
 </html>
 
