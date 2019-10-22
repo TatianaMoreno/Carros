@@ -10,8 +10,12 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import javax.annotation.PostConstruct;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
+import org.primefaces.event.CellEditEvent;
+import org.primefaces.event.RowEditEvent;
 
 /**
  *  Clase que guarda toda la logica para guardar los carrosy registrarlos
@@ -75,6 +79,25 @@ public class MenuCarro implements  Serializable{
      */
     public void createCars() {
         listarCarros.add(new Carro(getNombre(),getCar(), getModelo()));
+    }
+    public void onRowEdit(RowEditEvent event) {
+        FacesMessage msg = new FacesMessage("Car Edited", ((Carro) event.getObject()).getNombreCarro());
+        FacesContext.getCurrentInstance().addMessage(null, msg);
+    }
+     
+    public void onRowCancel(RowEditEvent event) {
+        FacesMessage msg = new FacesMessage("Edit Cancelled", ((Carro) event.getObject()).getNombreCarro());
+        FacesContext.getCurrentInstance().addMessage(null, msg);
+    }
+     
+    public void onCellEdit(CellEditEvent event) {
+        Object oldValue = event.getOldValue();
+        Object newValue = event.getNewValue();
+         
+        if(newValue != null && !newValue.equals(oldValue)) {
+            FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "Cambio la celda", "Antigua: " + oldValue + ", Nueva:" + newValue);
+            FacesContext.getCurrentInstance().addMessage(null, msg);
+        }
     }
     public MenuCarro() {
     }
