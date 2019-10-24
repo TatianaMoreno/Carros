@@ -11,9 +11,11 @@ import java.util.Date;
 import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
-import javax.faces.view.ViewScoped;
-import javax.inject.Named;
+
+
 import org.primefaces.event.CellEditEvent;
 import org.primefaces.event.RowEditEvent;
 
@@ -21,8 +23,8 @@ import org.primefaces.event.RowEditEvent;
  *  Clase que guarda toda la logica para guardar los carrosy registrarlos
  * @author Tatiana Moreno, Andres Chila
  */
-@Named
-@ViewScoped
+@ManagedBean(name="menuCarro")
+@SessionScoped
 public class MenuCarro implements  Serializable{
     //Variable que guarda 
     private String car;  
@@ -98,6 +100,9 @@ public class MenuCarro implements  Serializable{
             FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "Cambio la celda", "Antigua: " + oldValue + ", Nueva:" + newValue);
             FacesContext.getCurrentInstance().addMessage(null, msg);
         }
+    }
+    public void eliminarCarro(Carro c){
+        listarCarros.remove(c);
     }
     public MenuCarro() {
     }
