@@ -41,16 +41,15 @@
                                  editable="true"
                                  rendered="#{not empty menuCarro.listarCarros}" 
                                  widgetVar="carsTable"
-                                 emptyMessage="No hay carros con ese criterio de busqueda" 
                                  filteredValue="#{menuCarro.filteredCars}"
                                  rows="5"
-
                                  styleClass="tablaregistrocarros"
                                  paginator="true"
                                  paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}">
 
-                        <p:ajax event="rowEdit" listener="#{menuCarro.onRowEdit}" update=":form:msgs" />
-                        <p:ajax event="rowEditCancel" listener="#{menuCarro.onRowCancel}" update=":form:msgs" />
+                        <p:ajax event="rowEdit" listener="#{menuCarro.editareditar}" update=":form:msgs" />
+                        <p:ajax event="rowEditCancel" listener="#{menuCarro.editarcancelar}" update=":form:msgs" />
+
                         <p:column filterBy="#{lista.nombreCarro}" headerText="Nombre" footerText="Contiene" filterMatchMode="contains">
                             <p:cellEditor>
                                 <f:facet name="output"><h:outputText value="#{lista.nombreCarro}" /></f:facet>
@@ -82,8 +81,8 @@
                                 </p:spinner>
                             </f:facet>
                             <p:cellEditor>
-                                <f:facet name="output"><h:outputText value="#{lista.fecha}" /></f:facet>
-                                <f:facet name="input"><p:calendar id="month" value="#{lista.fecha}" pattern="yyyy"  yearRange="1990:2019"/></f:facet>
+                                <f:facet name="output"><p:calendar id="year" value="#{lista.modeloCarro}" pattern="yyyy" disabled="true"/></f:facet>
+                                <f:facet name="input"><p:calendar id="month" value="#{lista.modeloCarro}" pattern="yyyy"  yearRange="1990:2019"/></f:facet>
                             </p:cellEditor>
 
                         </p:column>
@@ -92,12 +91,9 @@
                         </p:column>
                         <p:column style="width: 70px">
                             <h:commandLink value="Eliminar" actionListener="#{menuCarro.eliminarCarro(lista)}" />
-                                
                         </p:column>
                     </p:dataTable>
-
                 </p:panel>
-
             </h:form>
         </p:panel>
     </h:body>
